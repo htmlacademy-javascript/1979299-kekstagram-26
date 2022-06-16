@@ -39,7 +39,7 @@ const generatePhotos = () => {
     id,
     url: getRandomArrayElement(URL_INDEX),
     description: getRandomArrayElement(DESCRIPTION_INDEX),
-    likes: getRandomLikes(MIN_LIKES_COUNT, MAX_LIKES_COUNT),
+    likes: getRandomIndex(MIN_LIKES_COUNT, MAX_LIKES_COUNT),
 
   });
 
@@ -54,14 +54,14 @@ const generatePhotos = () => {
   const PHOTOS_ID = generatePhotosId(MAX_COUNT);
 
   // функция генерации лайков
-  function getRandomLikes (min, max) {
+  function getRandomIndex (min, max) {
     return Math.random() * (max - min) + min;
   }
 
   // функция генерации коментариев
 
   const photoComments = {
-    id: getRandomArrayElement(MIN_COUNT, MAX_COUNT),
+    id: getRandomIndex(MIN_COUNT, MAX_COUNT),
     avatar: `img/avatar-${getRandomArrayElement(MIN_IMG_NUMBER, MAX_IMG_NUMBER)}.svg`,
     message: getRandomArrayElement(MESSAGE),
     name: getRandomArrayElement(NAME),
@@ -74,4 +74,4 @@ const generatePhotos = () => {
 };
 
 generatePhotos();
-
+console.log(generatePhotos());
