@@ -31,15 +31,16 @@ function getRandomPositiveInteger (a, b) {
 
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-// функция проверки длины строки
-const checkStringLength = (string, length) => string.length <= length;
-
 // итоговая функция вывода значений
 const generatePhotos = () => {
 
   // функция поиска Id
   const makePhotoId = (id) => ({
     id,
+    url: getRandomArrayElement(URL_INDEX),
+    description: getRandomArrayElement(DESCRIPTION_INDEX),
+    likes: getRandomLikes(MIN_LIKES_COUNT, MAX_LIKES_COUNT),
+
   });
 
   const generatePhotosId = (count) => {
@@ -52,6 +53,11 @@ const generatePhotos = () => {
 
   const PHOTOS_ID = generatePhotosId(MAX_COUNT);
 
+  // функция генерации лайков
+  function getRandomLikes (min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
   // функция генерации коментариев
 
   const photoComments = {
@@ -63,9 +69,6 @@ const generatePhotos = () => {
 
   return{
     id: PHOTOS_ID,
-    url: getRandomArrayElement(URL_INDEX),
-    description: getRandomArrayElement(DESCRIPTION_INDEX),
-    likes: checkStringLength(MIN_LIKES_COUNT, MAX_LIKES_COUNT),
     comments: photoComments,
   };
 };
