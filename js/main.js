@@ -38,8 +38,8 @@ const checkStringLength = (string, length) => string.length <= length;
 const generatePhotos = () => {
 
   // функция поиска Id
-  const makePhotoId = () => ({
-    id: [],
+  const makePhotoId = (id) => ({
+    id,
   });
 
   const generatePhotosId = (count) => {
@@ -62,13 +62,13 @@ const generatePhotos = () => {
   };
 
   return{
-    id: PHOTOS_ID(),
+    id: PHOTOS_ID,
     url: getRandomArrayElement(URL_INDEX),
     description: getRandomArrayElement(DESCRIPTION_INDEX),
     likes: checkStringLength(MIN_LIKES_COUNT, MAX_LIKES_COUNT),
-    comments: photoComments(),
+    comments: photoComments,
   };
 };
 
 generatePhotos();
-
+console.log(generatePhotos());
