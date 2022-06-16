@@ -1,5 +1,6 @@
 // Создание массива из 25 сгенерированных объектов
 
+// Константы
 const URL_INDEX = ['photos/1.jpg', 'photos/2.jpg', 'photos/3.jpg', 'photos/4.jpg', 'photos/5.jpg', 'photos/6.jpg', 'photos/7.jpg', 'photos/8.jpg', 'photos/9.jpg', 'photos/10.jpg', 'photos/11.jpg', 'photos/12.jpg', 'photos/13.jpg', 'photos/14.jpg', 'photos/15.jpg', 'photos/16.jpg', 'photos/17.jpg', 'photos/18.jpg', 'photos/19.jpg', 'photos/20.jpg', 'photos/21.jpg', 'photos/22.jpg', 'photos/23.jpg', 'photos/24.jpg', 'photos/25.jpg'];
 
 const DESCRIPTION_INDEX = ['Вид пляжа', 'на пляж Туда', 'Лагуна', 'Вот такие фотографы у нас', 'Супчик джакузи', 'Тачка', 'Десерт', 'Компотик', 'Самолетик', 'Обувной ящик', 'Ляпота', 'Аудюха', 'Салатик', 'Кото-суши', 'Тапки-боты', 'В илюминаторе', 'Хор', 'Ретро-кар', 'Тапочки-светлячки', 'Отель', 'Обед-вкусняшка' , 'Закат', 'Крабик', 'На концерте', 'Доброжелательный бегемот'];
@@ -38,7 +39,7 @@ const generatePhotos = () => {
 
   // функция поиска Id
   const makePhotoId = () => ({
-    id,
+    id: [],
   });
 
   const generatePhotosId = (count) => {
@@ -51,18 +52,15 @@ const generatePhotos = () => {
 
   const PHOTOS_ID = generatePhotosId(MAX_COUNT);
 
-  const getRandomMessageIndex = getRandomArrayElement(0, MESSAGE - 1);
-  const getRandomNameIndex = getRandomArrayElement(0, NAME - 1);
+  // функция генерации коментариев
 
   const photoComments = {
-    id: getRandomPositiveInteger(MIN_COUNT, MAX_COUNT),
+    id: getRandomArrayElement(MIN_COUNT, MAX_COUNT),
     avatar: `img/avatar-${getRandomArrayElement(MIN_IMG_NUMBER, MAX_IMG_NUMBER)}.svg`,
     message: getRandomArrayElement(MESSAGE),
     name: getRandomArrayElement(NAME),
   };
 
-  getRandomMessageIndex();
-  getRandomNameIndex();
   return{
     id: PHOTOS_ID(),
     url: getRandomArrayElement(URL_INDEX),
