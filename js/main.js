@@ -40,7 +40,7 @@ const generatePhotos = () => {
     url: getRandomArrayElement(URL_INDEX),
     description: getRandomArrayElement(DESCRIPTION_INDEX),
     likes: getRandomIndex(MIN_LIKES_COUNT, MAX_LIKES_COUNT),
-
+    comments:{},
   });
 
   const generatePhotosId = (count) => {
@@ -55,10 +55,10 @@ const generatePhotos = () => {
 
   // функция генерации лайков
   function getRandomIndex (min, max) {
-    return Math.random() * (max - min) + min;
+    return Math.floor (Math.random() * (max - min) + min);
   }
 
-  // функция генерации коментариев
+  // //Объект коментариев
 
   const photoComments = {
     id: getRandomIndex(MIN_COUNT, MAX_COUNT),
