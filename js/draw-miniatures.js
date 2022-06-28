@@ -6,6 +6,7 @@ const renderPhoto = (photo) => {
 
   pictureElement.querySelector('.picture__img').src = photo.url;
   pictureElement.querySelector('.picture__likes').textContent = photo.likes;
+  pictureElement.querySelector('.picture__comments').textContent = photo.comments;
 
   return pictureElement;
 };
