@@ -1,5 +1,5 @@
-import {getRandomArrayElement} from './js/util.js';
-import {getRandomIndex} from './js/util.js';
+import {getRandomArrayElement} from './util.js';
+import {getRandomIndex} from './util.js';
 
 // Создание массива из 25 сгенерированных объектов
 
@@ -11,6 +11,10 @@ const DESCRIPTION_INDEX = ['Вид пляжа', 'на пляж Туда', 'Ла�
 const MESSAGE = ['Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.', 'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.'];
 
 const NAME = ['Евпатий', 'Хон-Гильдон', 'Мишенька', 'Андрюша', 'Алексей'];
+
+const MIN_COUNT_COMMENT = 0;
+
+const MAX_COUNT_COMMENT = 10;
 
 const MIN_COUNT = 1;
 
@@ -24,41 +28,48 @@ const MIN_LIKES_COUNT = 15;
 
 const MAX_LIKES_COUNT = 200;
 
+const commentRandomIds = [];
+
+//функция генерации коментариев
+const createComment = () => {
+  const randomId = getRandomIndex(MIN_COUNT , MAX_COUNT);
+
+  while (commentRandomIds.indexOf(randomId) < 0) {
+    commentRandomIds.push(randomId);
+  }
+
+  return {
+    id: commentRandomIds[commentRandomIds.length - 1],
+    avatar: `img/avatar-${getRandomIndex(MIN_IMG_NUMBER, MAX_IMG_NUMBER)}.svg`,
+    message: getRandomArrayElement(MESSAGE),
+    name: getRandomArrayElement(NAME)
+  };
+};
+
 // итоговая функция вывода значений
 const generatePhotos = () => {
 
-  // функция поиска Id
-  const makePhotoId = (id) => ({
+  // функция поиска фото
+  const makePhoto = (id) => ({
     id,
     url: getRandomArrayElement(URL_INDEX),
     description: getRandomArrayElement(DESCRIPTION_INDEX),
     likes: getRandomIndex(MIN_LIKES_COUNT, MAX_LIKES_COUNT),
-    comments: {},
+    comments:  Array.from({length: getRandomIndex(MIN_COUNT_COMMENT, MAX_COUNT_COMMENT)}, createComment)
   });
 
-  const generatePhotosId = (count) => {
+  const generateData = (count) => {
     const photosId = [];
     for (let i = 1; i <= count; i++) {
-      photosId.push(makePhotoId(i));
+      photosId.push(makePhoto(i));
     }
     return photosId;
   };
 
-  const PHOTOS_ID = generatePhotosId(MAX_COUNT);
+  const data = generateData(MAX_COUNT);
 
-  //Объект коментариев
-
-  const photoComments = {
-    id: getRandomIndex(MIN_COUNT, MAX_COUNT),
-    avatar: `img/avatar-${getRandomArrayElement(MIN_IMG_NUMBER, MAX_IMG_NUMBER)}.svg`,
-    message: getRandomArrayElement(MESSAGE),
-    name: getRandomArrayElement(NAME),
-  };
-
-  return{
-    id: PHOTOS_ID,
-    comments: photoComments,
-  };
+  return data;
 };
 
 export {generatePhotos};
+
