@@ -72,4 +72,4 @@ const generatePhotos = () => {
 };
 
 export {generatePhotos};
-
+export {MAX_COUNT};

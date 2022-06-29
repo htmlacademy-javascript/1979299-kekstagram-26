@@ -17,7 +17,7 @@ const createComments = (comments) => {
 
     newCommemtItem.querySelector('.social__text').textContent = comment.message;
 
-    commentsFragment.append(newCommemtItem);
+    commentsFragment.appendChild(newCommemtItem);
   });
 
   commentsCountTotal.textContent = comments.length;
@@ -25,7 +25,8 @@ const createComments = (comments) => {
   commentsLoader.classList.add('hidden');
 
   commentsContainer.innerHTML = '';
-  commentsContainer.append(commentsFragment);
+  commentsContainer.appendChild(commentsFragment);
 };
 
 export {createComments};
+

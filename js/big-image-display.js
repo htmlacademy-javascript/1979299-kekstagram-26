@@ -27,7 +27,7 @@ const closeBigViewDisplay = () => {
 bigViewDisplayCloseButton.addEventListener('click', closeBigViewDisplay);
 
 addEventListener('keydown', (evt) => {
-  if (evt.keyCode === 27) {
+  if (evt.key === 27) {
     closeBigViewDisplay();
   }
 });
