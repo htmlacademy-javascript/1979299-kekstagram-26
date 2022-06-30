@@ -1,7 +1,7 @@
-import {createComments} from './create-comments';
+import {createComments} from './create-comments.js';
 
 const bigViewDisplay = document.querySelector('.big-picture');
-const bigViewDisplayImage = bigViewDisplay.querySelector('.big-picture__img');
+const bigViewDisplayImage = bigViewDisplay.querySelector('.big-picture__img img');
 const bigViewDisplayLikes = bigViewDisplay.querySelector('.likes-count');
 const bigViewDisplayDescription = bigViewDisplay.querySelector('.social__caption');
 const bigViewDisplayCloseButton = bigViewDisplay.querySelector('.big-picture__cancel');
@@ -26,8 +26,8 @@ const closeBigViewDisplay = () => {
 
 bigViewDisplayCloseButton.addEventListener('click', closeBigViewDisplay);
 
-addEventListener('keydown', (evt) => {
-  if (evt.key === 27) {
+document.addEventListener('keydown', (evt) => {
+  if (evt.key === 'Escape') {
     closeBigViewDisplay();
   }
 });
