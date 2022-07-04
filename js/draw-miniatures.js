@@ -1,4 +1,4 @@
-import { getBigViewDisplay } from './big-image-display.js';
+import {getBigViewDisplay} from './big-image-display.js';
 
 const drawMiniaturesTemplate = document.querySelector('#picture').content.querySelector('.picture'); //создаю элемент шаблона picture
 const picturesContainer = document.querySelector('.pictures');

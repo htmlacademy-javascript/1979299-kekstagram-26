@@ -8,12 +8,12 @@ function getRandomPositiveInteger (a, b) {
 
 const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-export {getRandomArrayElement};
-
-
 // функция генерации сдучайных чисел
 function getRandomIndex (min, max) {
   return Math.floor (Math.random() * (max - min) + min);
 }
 
-export {getRandomIndex};
+// на закрытие клавишей Esc
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+export {getRandomArrayElement, getRandomIndex, isEscapeKey};

@@ -7,17 +7,17 @@ const commentsCountTotal = commentsCount.querySelector('.comments-count');
 
 const commentsLoader = document.querySelector('.social__comments-loader');
 
-const createComments = (comments) => {
+const renderCommentsList = (comments) => {
   comments.forEach((comment) => {
-    const newCommemtItem = commentsItem.cloneNode(true);
+    const newCommentItem = commentsItem.cloneNode(true);
 
-    const newCommemtItemAuthor = newCommemtItem.querySelector('.social__picture');
-    newCommemtItemAuthor.src = comment.avatar;
-    newCommemtItemAuthor.alt = comment.name;
+    const newCommentItemAuthor = newCommentItem.querySelector('.social__picture');
+    newCommentItemAuthor.src = comment.avatar;
+    newCommentItemAuthor.alt = comment.name;
 
-    newCommemtItem.querySelector('.social__text').textContent = comment.message;
+    newCommentItem.querySelector('.social__text').textContent = comment.message;
 
-    commentsFragment.appendChild(newCommemtItem);
+    commentsFragment.appendChild(newCommentItem);
   });
 
   commentsCountTotal.textContent = comments.length;
@@ -28,5 +28,9 @@ const createComments = (comments) => {
   commentsContainer.appendChild(commentsFragment);
 };
 
-export {createComments};
+const clearCommentsList = () => {
+  commentsContainer.innerHTML = '';
+};
+
+export {renderCommentsList, clearCommentsList};
 

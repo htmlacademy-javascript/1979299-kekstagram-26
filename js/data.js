@@ -71,5 +71,5 @@ const generatePhotos = () => {
   return data;
 };
 
-export {generatePhotos};
-export {MAX_COUNT};
+export {generatePhotos, MAX_COUNT};
+
