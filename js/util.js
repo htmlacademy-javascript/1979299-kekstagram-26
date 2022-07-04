@@ -16,4 +16,14 @@ function getRandomIndex (min, max) {
 // на закрытие клавишей Esc
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-export {getRandomArrayElement, getRandomIndex, isEscapeKey};
+// показывает элемент
+const showElement = (element) => {
+  element.classList.remove('hidden');
+};
+
+//скрывает елемент
+const hideElement = (element) => {
+  element.classList.add('hidden');
+};
+
+export {getRandomArrayElement, getRandomIndex, isEscapeKey, showElement, hideElement};
