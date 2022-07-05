@@ -30,4 +30,5 @@ const hideElement = (element) => {
 const removeInputValue = (input) => {
   input.innerHtml = '';
 };
+
 export {getRandomArrayElement, getRandomIndex, isEscapeKey, showElement, hideElement, removeInputValue};

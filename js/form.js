@@ -1,8 +1,9 @@
+import './scale-photo.js';
+
 const formElement = document.querySelector('.img-upload__form');
 const hashtagsInput = formElement.querySelector('#hashtags');
 const descriptionInput = formElement.querySelector('#description');
 const re = /^#[A-Za-zА-Яа-яЕё0-9]{1,19}$/;
-
 
 const pristine = new Pristine(formElement, {
   classTo: 'img-upload__item',
