@@ -9,15 +9,15 @@ const commentsLoader = document.querySelector('.social__comments-loader');
 
 const renderCommentsList = (comments) => {
   comments.forEach((comment) => {
-    const newCommentItem = commentsItem.cloneNode(true);
+    const newComment = commentsItem.cloneNode(true);
 
-    const newCommentItemAuthor = newCommentItem.querySelector('.social__picture');
+    const newCommentItemAuthor = newComment.querySelector('.social__picture');
     newCommentItemAuthor.src = comment.avatar;
     newCommentItemAuthor.alt = comment.name;
 
-    newCommentItem.querySelector('.social__text').textContent = comment.message;
+    newComment.querySelector('.social__text').textContent = comment.message;
 
-    commentsFragment.appendChild(newCommentItem);
+    commentsFragment.appendChild(newComment);
   });
 
   commentsCountTotal.textContent = comments.length;

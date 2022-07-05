@@ -26,4 +26,8 @@ const hideElement = (element) => {
   element.classList.add('hidden');
 };
 
-export {getRandomArrayElement, getRandomIndex, isEscapeKey, showElement, hideElement};
+// очищает строку в input
+const removeInputValue = (input) => {
+  input.innerHtml = '';
+};
+export {getRandomArrayElement, getRandomIndex, isEscapeKey, showElement, hideElement, removeInputValue};

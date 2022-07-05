@@ -19,7 +19,7 @@ const renderPhoto = (photo) => {
 };
 
 const renderPhotos = (photos) => {
-  const fragment = document.createDocumentFragment(); // Создаю "коробочку"
+  const fragment = document.createDocumentFragment();
 
   photos.forEach((photo) => {
     const photoElement = renderPhoto(photo);
