@@ -1,4 +1,4 @@
-const SCALE_STEP = 25;
+import {SCALE_STEP} from './data.js';
 
 const imagePreviewElement = document.querySelector('.img-upload__preview img');
 

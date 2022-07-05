@@ -1,4 +1,4 @@
-import './scale-photo.js';
+// import './scale-photo.js';
 
 const formElement = document.querySelector('.img-upload__form');
 const hashtagsInput = formElement.querySelector('#hashtags');
@@ -30,13 +30,13 @@ const hashtagsValidate = (value) => {
 pristine.addValidator(
   hashtagsInput,
   hashtagsValidate,
-  'Хэштег должен начинаться с # и состоять только из букв и цифр'
+  'Неверный формат хэштега'
 );
 
 pristine.addValidator(
   descriptionInput,
   commentValidate,
-  'Длина комментария должна быть не больше 140 символов'
+  'Длина комментария не более 140 символов'
 );
 
 formElement.addEventListener('submit', (evt) => {
