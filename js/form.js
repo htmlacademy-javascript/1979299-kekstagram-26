@@ -1,4 +1,4 @@
-// import './scale-photo.js';
+import './scale-photo.js';
 
 const formElement = document.querySelector('.img-upload__form');
 const hashtagsInput = formElement.querySelector('#hashtags');
