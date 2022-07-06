@@ -1,4 +1,5 @@
 import {hideElement, showElement} from './util.js';
+import constants from './constants.js';
 
 const listContainerElement = document.querySelector('.social__comments');
 const commentElement = document.querySelector('.social__comment');
@@ -29,14 +30,14 @@ const renderCommentsList = (comments) => {
 };
 
 const checkCommentListLength = (comments) => {
-  if (comments.length > 5) {
+  if (comments.length > constants.LIMITED_NUMBER_COMMENTS) {
     showElement(countElement);
     showElement(loaderElememt);
 
     countTotalElement.textContent = allComments.length;
-    countCurrentElement.textContent = Number(countCurrentElement.textContent) + 5;
+    countCurrentElement.textContent = Number(countCurrentElement.textContent) + constants.LIMITED_NUMBER_COMMENTS;
 
-    const commentList = comments.slice(0, 5);
+    const commentList = comments.slice(0, constants.LIMITED_NUMBER_COMMENTS);
     renderCommentsList(commentList);
   } else {
     renderCommentsList(comments);
