@@ -5,7 +5,7 @@ const hashtagsInput = formElement.querySelector('#hashtags');
 const descriptionInput = formElement.querySelector('#description');
 const re = /^#[A-Za-zА-Яа-яЕё0-9]{1,19}$/;
 
-const pristine = new Pristine(formElement, {
+const pristine = window.Pristine(formElement, {
   classTo: 'img-upload__item',
   errorClass: 'img-upload__item--invalid',
   errorTextParent: 'img-upload__item',
