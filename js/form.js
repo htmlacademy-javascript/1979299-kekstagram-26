@@ -1,8 +1,8 @@
 import './scale-photo.js';
 
 const formElement = document.querySelector('.img-upload__form');
-const hashtagsInput = formElement.querySelector('#hashtags');
-const descriptionInput = formElement.querySelector('#description');
+const hashtagsInputElement = formElement.querySelector('#hashtags');
+const descriptionInputElement = formElement.querySelector('#description');
 const re = /^#[A-Za-zА-Яа-яЕё0-9]{1,19}$/;
 
 const pristine = window.Pristine(formElement, {
@@ -28,13 +28,13 @@ const hashtagsValidate = (value) => {
 };
 
 pristine.addValidator(
-  hashtagsInput,
+  hashtagsInputElement,
   hashtagsValidate,
   'Неверный формат хэштега'
 );
 
 pristine.addValidator(
-  descriptionInput,
+  descriptionInputElement,
   commentValidate,
   'Длина комментария не более 140 символов'
 );
@@ -47,4 +47,4 @@ formElement.addEventListener('submit', (evt) => {
 });
 
 
-export {hashtagsInput, descriptionInput};
+export {hashtagsInputElement, descriptionInputElement};
