@@ -41,10 +41,10 @@ pristine.addValidator(
 
 formElement.addEventListener('submit', (evt) => {
   const isValidate = pristine.validate();
-
   if (!isValidate) {
     evt.preventDefault();
   }
 });
+
 
 export {hashtagsInput, descriptionInput};

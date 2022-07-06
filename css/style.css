@@ -699,7 +699,7 @@ main {
 /**
  * Контейнеры вывода ошибок
  */
- .img-upload__field-wrapper {
+ .img-upload__item {
   margin-bottom: 20px;
 }
 
