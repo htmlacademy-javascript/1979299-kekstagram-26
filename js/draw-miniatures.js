@@ -1,4 +1,4 @@
-import { getBigViewDisplay } from './big-image-display.js';
+import {getBigViewDisplay} from './big-image-display.js';
 
 const drawMiniaturesTemplate = document.querySelector('#picture').content.querySelector('.picture'); //создаю элемент шаблона picture
 const picturesContainer = document.querySelector('.pictures');
@@ -19,7 +19,7 @@ const renderPhoto = (photo) => {
 };
 
 const renderPhotos = (photos) => {
-  const fragment = document.createDocumentFragment(); // Создаю "коробочку"
+  const fragment = document.createDocumentFragment();
 
   photos.forEach((photo) => {
     const photoElement = renderPhoto(photo);

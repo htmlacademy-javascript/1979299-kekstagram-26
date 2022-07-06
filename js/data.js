@@ -30,6 +30,10 @@ const MAX_LIKES_COUNT = 200;
 
 const commentRandomIds = [];
 
+const HASHTAG_MAX_LENGTH = 20;
+
+const SCALE_STEP = 25;
+
 //функция генерации коментариев
 const createComment = () => {
   const randomId = getRandomIndex(MIN_COUNT , MAX_COUNT);
@@ -71,5 +75,5 @@ const generatePhotos = () => {
   return data;
 };
 
-export {generatePhotos};
-export {MAX_COUNT};
+export {generatePhotos, MAX_COUNT, HASHTAG_MAX_LENGTH, SCALE_STEP};
+

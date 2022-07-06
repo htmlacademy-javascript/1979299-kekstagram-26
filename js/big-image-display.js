@@ -1,4 +1,6 @@
-import {createComments} from './create-comments.js';
+import {renderCommentsList, clearCommentsList} from './comments-list.js';
+import {isEscapeKey} from './util.js';
+import {closePopup, openPopup} from './popup.js';
 
 const bigViewDisplay = document.querySelector('.big-picture');
 const bigViewDisplayImage = bigViewDisplay.querySelector('.big-picture__img img');
@@ -6,30 +8,29 @@ const bigViewDisplayLikes = bigViewDisplay.querySelector('.likes-count');
 const bigViewDisplayDescription = bigViewDisplay.querySelector('.social__caption');
 const bigViewDisplayCloseButton = bigViewDisplay.querySelector('.big-picture__cancel');
 
+const onBigViewDisplayEscKeydown = (evt) => {
+  if (isEscapeKey(evt)) {
+    evt.preventDefault();
+    closePopup(bigViewDisplay);
+    clearCommentsList();
+  }
+};
+
 const getBigViewDisplay  = (url, likes, comments, description) => {
+  openPopup(bigViewDisplay);
   bigViewDisplayImage.src = url;
   bigViewDisplayLikes.textContent = likes;
   bigViewDisplayDescription.textContent = description;
 
-  if (comments.length > 0) {
-    createComments(comments);
-  }
+  renderCommentsList(comments);
 
-  bigViewDisplay.classList.remove('hidden');
-  document.body.classList.add('modal-open');
+  document.addEventListener('keydown', onBigViewDisplayEscKeydown);
 };
 
-const closeBigViewDisplay = () => {
-  bigViewDisplay.classList.add('hidden');
-  document.body.classList.remove('modal-open');
-};
-
-bigViewDisplayCloseButton.addEventListener('click', closeBigViewDisplay);
-
-document.addEventListener('keydown', (evt) => {
-  if (evt.key === 'Escape') {
-    closeBigViewDisplay();
-  }
+bigViewDisplayCloseButton.addEventListener('click', () => {
+  closePopup(bigViewDisplay);
+  clearCommentsList();
+  document.addEventListener('keydown', onBigViewDisplayEscKeydown);
 });
 
 export {getBigViewDisplay};
