@@ -1,4 +1,4 @@
-import {renderCommentsList, clearCommentsList} from './comments-list.js';
+import {getAllComments, clearCommentsList} from './comments-list.js';
 import {isEscapeKey} from './util.js';
 import {closePopup, openPopup} from './popup.js';
 
@@ -22,7 +22,7 @@ const getBigViewDisplay  = (url, likes, comments, description) => {
   bigViewDisplayLikes.textContent = likes;
   bigViewDisplayDescription.textContent = description;
 
-  renderCommentsList(comments);
+  getAllComments(comments);
 
   document.addEventListener('keydown', onBigViewDisplayEscKeydown);
 };
