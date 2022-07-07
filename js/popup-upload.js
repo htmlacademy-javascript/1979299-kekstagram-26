@@ -1,8 +1,9 @@
 import {openPopup, closePopup} from './popup.js';
 import {isEscapeKey, removeInputValue} from './util.js';
 import {hashtagsInputElement, descriptionInputElement} from './form.js';
-// import {scaleInput, scalePhotoPreview} from './scale-photo.js';
-// import constants from './constants.js';
+import {scaleInput, scalePhotoPreview} from './scale-photo.js';
+import {sliderElement, sliderValueElement, imagePreviewElement} from './photo-effect-selection.js';
+import constants from './constants.js';
 
 const popupElement = document.querySelector('.img-upload__overlay');
 const uploadFileInputElement = document.querySelector('#upload-file');
@@ -20,7 +21,6 @@ const onPopupEscKeydown = (evt) => {
 
 uploadFileInputElement.addEventListener('change', () => {
   openPopup(popupElement);
-
   document.addEventListener('keydown', onPopupEscKeydown);
 });
 
@@ -29,9 +29,11 @@ popupCloseButtonElement.addEventListener('click', () => {
   removeInputValue(uploadFileInputElement);
   removeInputValue(hashtagsInputElement);
   removeInputValue(descriptionInputElement);
-
-  // scaleInput.value = '100%';
-  // scalePhotoPreview(constants.SCALE_MAX);
-
+  scaleInput.value = '100%';
+  scalePhotoPreview(constants.SCALE_MAX);
+  removeInputValue(sliderValueElement);
+  sliderElement.setAttribute('disabled', true);
+  imagePreviewElement.classList = '';
+  imagePreviewElement.style.filter = '';
   document.removeEventListener('keydown', onPopupEscKeydown);
 });
