@@ -1,4 +1,9 @@
 export default {
   LIMITED_NUMBER_COMMENTS: 5,
+  COMMENT_MAX_LENGTH: 140,
+
+  SCALE_MAX: 100,
+  SCALE_MIN: 25,
+  SCALE_STEP: 25,
 };
 

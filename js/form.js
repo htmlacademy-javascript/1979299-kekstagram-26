@@ -1,4 +1,5 @@
 import './scale-photo.js';
+import constants from './constants.js';
 
 const formElement = document.querySelector('.img-upload__form');
 const hashtagsInputElement = formElement.querySelector('#hashtags');
@@ -13,7 +14,7 @@ const pristine = window.Pristine(formElement, {
   errorTextClass: 'img-upload__error'
 }, false);
 
-const commentValidate = (value) => value.length <= 140;
+const commentValidate = (value) => value.length <= constants.COMMENT_MAX_LENGTH;
 
 const hashtagsValidate = (value) => {
   const hashtagArray = value.split(' ');
@@ -45,6 +46,5 @@ formElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
   }
 });
-
 
 export {hashtagsInputElement, descriptionInputElement};
