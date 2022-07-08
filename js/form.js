@@ -16,12 +16,33 @@ const pristine = window.Pristine(formElement, {
 
 const commentValidate = (value) => value.length <= constants.COMMENT_MAX_LENGTH;
 
-const hashtagsValidate = (value) => {
-  const hashtagArray = value.split(' ');
-  let isValidate = true;
+function hasUniqueElements(hashtags) {
+  const uniqueHashtags = [];
 
+  for (const hashtag of hashtags) {
+    if (!uniqueHashtags.includes(hashtag)) {
+      uniqueHashtags.push(hashtag);
+    }
+  }
+  return uniqueHashtags.length === hashtags.length;
+}
+
+const hashtagsValidate = (value) => {
+  let isValidate = true;
   if (value.length > 0) {
-    hashtagArray.forEach((hashtag) => {
+    const hashtags = value.toLowerCase().split(' ');
+    if (hashtags.length > 5) {
+      return false;
+    }
+    if (!hasUniqueElements(hashtags)) {
+      return false;
+    }
+
+    hashtags.forEach((hashtag) => {
+      if (hashtag.length > constants.HASHTAG_MAX_LENGTH) {
+        isValidate = false;
+      }
+
       isValidate = isValidate && re.test(hashtag);
     });
   }

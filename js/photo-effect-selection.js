@@ -10,11 +10,11 @@ let selectedEffect = 'none';
 
 noUiSlider.create(sliderElement, {
   range: {
-    min: 0,
-    max: 100,
+    min: constants.NONE_MIN_VALUE,
+    max: constants.NONE_MAX_VALUE,
   },
-  start: 100,
-  step: 1,
+  start: constants.NONE_START,
+  step: constants.NONE_STEP,
   connect: 'lower',
 });
 
@@ -38,40 +38,40 @@ const updateSliderOptions = (effectType) => {
     case 'marvin':
       sliderElement.noUiSlider.updateOptions({
         range: {
-          min: 0,
-          max: 100
+          min: constants.MARVIN_MIN_VALUE,
+          max: constants.MARVIN_MAX_VALUE
         },
-        step: 1,
+        step: constants.MARVIN_STEP,
       });
       sliderElement.noUiSlider.set(100);
       break;
     case 'phobos':
       sliderElement.noUiSlider.updateOptions({
         range: {
-          min: 0,
-          max: 3
+          min: constants.PHOBOS_MIN_VALUE,
+          max: constants.PHOBOS_MAX_VALUE
         },
-        step: 0.1,
+        step: constants.PHOBOS_STEP,
       });
       sliderElement.noUiSlider.set(3);
       break;
     case 'heat':
       sliderElement.noUiSlider.updateOptions({
         range: {
-          min: 1,
-          max: 3
+          min: constants.HEAT_MIN_VALUE,
+          max: constants.HEAT_MAX_VALUE
         },
-        step: 0.1,
+        step: constants.HEAT_STEP,
       });
       sliderElement.noUiSlider.set(3);
       break;
     case 'none':
       sliderElement.noUiSlider.updateOptions({
         range: {
-          min: 0,
-          max: 100,
+          min: constants.NONE_MIN_VALUE,
+          max: constants.NONE_MAX_VALUE,
         },
-        step: 1,
+        step: constants.NONE_STEP,
       });
       sliderElement.noUiSlider.set(100);
       sliderElement.setAttribute('disabled', true);
