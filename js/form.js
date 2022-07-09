@@ -1,4 +1,5 @@
 import './scale-photo.js';
+import constants from './constants.js';
 
 const formElement = document.querySelector('.img-upload__form');
 const hashtagsInputElement = formElement.querySelector('#hashtags');
@@ -13,14 +14,35 @@ const pristine = window.Pristine(formElement, {
   errorTextClass: 'img-upload__error'
 }, false);
 
-const commentValidate = (value) => value.length <= 140;
+const commentValidate = (value) => value.length <= constants.COMMENT_MAX_LENGTH;
+
+function hasUniqueElements(hashtags) {
+  const uniqueHashtags = [];
+
+  for (const hashtag of hashtags) {
+    if (!uniqueHashtags.includes(hashtag)) {
+      uniqueHashtags.push(hashtag);
+    }
+  }
+  return uniqueHashtags.length === hashtags.length;
+}
 
 const hashtagsValidate = (value) => {
-  const hashtagArray = value.split(' ');
   let isValidate = true;
-
   if (value.length > 0) {
-    hashtagArray.forEach((hashtag) => {
+    const hashtags = value.toLowerCase().split(' ');
+    if (hashtags.length > 5) {
+      return false;
+    }
+    if (!hasUniqueElements(hashtags)) {
+      return false;
+    }
+
+    hashtags.forEach((hashtag) => {
+      if (hashtag.length > constants.HASHTAG_MAX_LENGTH) {
+        isValidate = false;
+      }
+
       isValidate = isValidate && re.test(hashtag);
     });
   }
@@ -45,6 +67,5 @@ formElement.addEventListener('submit', (evt) => {
     evt.preventDefault();
   }
 });
-
 
 export {hashtagsInputElement, descriptionInputElement};
