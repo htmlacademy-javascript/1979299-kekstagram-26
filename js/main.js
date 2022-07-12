@@ -1,3 +1,3 @@
 import './draw-miniatures.js';
-import './popup-upload.js';
+import './popup-uploading.js';
 

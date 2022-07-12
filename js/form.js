@@ -1,5 +1,6 @@
-import './scale-photo.js';
+// import './scale-photo.js';
 import {checkCommentLength} from './util.js';
+import {sendData} from './api.js';
 import constants from './constants.js';
 
 const formElement = document.querySelector('.img-upload__form');
@@ -62,7 +63,12 @@ pristine.addValidator(
 
 formElement.addEventListener('submit', (evt) => {
   const isValidate = pristine.validate();
-  if (!isValidate) {
+  if (isValidate) {
+    const formData = new FormData(evt.target);
+    evt.preventDefault();
+    const sendForm = () => sendData(formData);
+    sendForm();
+  } else {
     evt.preventDefault();
   }
 });

@@ -33,7 +33,7 @@ const updateSliderOptions = (effectType) => {
         },
         step: constants.CHROMESEPIA_STEP
       });
-      sliderElement.noUiSlider.set(1);
+      sliderElement.noUiSlider.set(constants.CHROMESEPIA_MAX_VALUE);
       break;
     case 'marvin':
       sliderElement.noUiSlider.updateOptions({
@@ -43,7 +43,7 @@ const updateSliderOptions = (effectType) => {
         },
         step: constants.MARVIN_STEP,
       });
-      sliderElement.noUiSlider.set(100);
+      sliderElement.noUiSlider.set(constants.MARVIN_MAX_VALUE);
       break;
     case 'phobos':
       sliderElement.noUiSlider.updateOptions({
@@ -53,7 +53,7 @@ const updateSliderOptions = (effectType) => {
         },
         step: constants.PHOBOS_STEP,
       });
-      sliderElement.noUiSlider.set(3);
+      sliderElement.noUiSlider.set(constants.PHOBOS_MAX_VALUE);
       break;
     case 'heat':
       sliderElement.noUiSlider.updateOptions({
@@ -63,7 +63,7 @@ const updateSliderOptions = (effectType) => {
         },
         step: constants.HEAT_STEP,
       });
-      sliderElement.noUiSlider.set(3);
+      sliderElement.noUiSlider.set(constants.PHOBOS_MAX_VALUE);
       break;
     case 'none':
       sliderElement.noUiSlider.updateOptions({
@@ -73,7 +73,7 @@ const updateSliderOptions = (effectType) => {
         },
         step: constants.NONE_STEP,
       });
-      sliderElement.noUiSlider.set(100);
+      sliderElement.noUiSlider.set(constants.NONE_MAX_VALUE);
       sliderElement.setAttribute('disabled', true);
       break;
   }
@@ -106,6 +106,13 @@ const setEffectStyle = (value) => {
   }
 };
 
+const setDefaultEffects = () => {
+  selectedEffect = 'none';
+  updateSliderOptions(selectedEffect);
+  setEffectStyle();
+  effectListInputsElement[0].checked = true;
+};
+
 effectListInputsElement.forEach((effectButton) => {
   effectButton.addEventListener('change', () => {
     imagePreviewElement.className = '';
@@ -126,4 +133,4 @@ sliderElement.noUiSlider.on('update', () => {
   setEffectStyle(sliderValueElement.value);
 });
 
-export {imagePreviewElement, sliderElement, sliderValueElement, selectedEffect};
+export {imagePreviewElement, sliderElement, sliderValueElement, setDefaultEffects};

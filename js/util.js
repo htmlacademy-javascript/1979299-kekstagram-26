@@ -23,6 +23,7 @@ const hideElement = (element) => {
 // очищает строку в input
 const removeInputValue = (input) => {
   input.innerHtml = '';
+  input.value = '';
 };
 
 export {checkCommentLength, isEscapeKey, showElement, hideElement, removeInputValue};
