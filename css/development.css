@@ -8,9 +8,33 @@
 .img-upload__error {
   color: #ff0000;
   text-transform: none;
+  text-align: center;
   margin-top: 5px;
 }
 
 .text__hashtags {
   margin-bottom: 0;
+}
+
+.img-upload__error--main {
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.img-upload__overlay--error {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.img-upload__button {
+  padding: 0;
+  margin: 0;
+  background: none;
+  box-shadow: none;
+  border: none;
+  text-decoration: underline;
+}
+
+.img-upload__button:hover {
+  text-decoration: none;
 }

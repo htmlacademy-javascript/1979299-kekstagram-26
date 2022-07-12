@@ -23,5 +23,7 @@ export default {
   NONE_MAX_VALUE: 100,
   NONE_STEP: 1,
   NONE_START: 100,
+
+  API_DATA_URL: 'https://26.javascript.pages.academy/kekstagram/data',
 };
 

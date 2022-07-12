@@ -5,7 +5,7 @@ import {scaleInput, scalePhotoPreview} from './scale-photo.js';
 import {sliderElement, sliderValueElement, imagePreviewElement} from './photo-effect-selection.js';
 import constants from './constants.js';
 
-const popupElement = document.querySelector('.img-upload__overlay');
+const popupElement = document.querySelector('.img-upload__overlay--uploading-form');
 const uploadFileInputElement = document.querySelector('#upload-file');
 const popupCloseButtonElement = popupElement.querySelector('.img-upload__cancel');
 
