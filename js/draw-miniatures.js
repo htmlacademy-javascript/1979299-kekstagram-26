@@ -5,7 +5,7 @@ import {showElement, hideElement} from './util.js';
 const drawMiniaturesTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const picturesContainer = document.querySelector('.pictures');
 const errorElement = document.querySelector('.img-upload__overlay--error');
-const updateUploadingButton = document.querySelector('.img-upload__button');
+const reloadingButtonElement = document.querySelector('.img-upload__button-reload');
 
 const renderPictureList = (pictures) => {
   const fragment = document.createDocumentFragment();
@@ -15,6 +15,7 @@ const renderPictureList = (pictures) => {
     pictureElement.querySelector('.picture__img').src = photo.url;
     pictureElement.querySelector('.picture__likes').textContent = photo.likes;
     pictureElement.querySelector('.picture__comments').textContent = photo.comments.length;
+
     pictureElement.addEventListener('click', (evt) => {
       evt.preventDefault();
       getBigViewDisplay(photo.url, photo.likes, photo.comments, photo.description);
@@ -32,7 +33,7 @@ const loadPictures = () => getData(renderPictureList, onRenderUploadingError);
 
 loadPictures();
 
-updateUploadingButton.addEventListener('click', () => {
+reloadingButtonElement.addEventListener('click', () => {
   hideElement(errorElement);
   loadPictures();
 });

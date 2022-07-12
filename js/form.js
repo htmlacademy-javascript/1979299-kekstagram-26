@@ -1,4 +1,3 @@
-// import './scale-photo.js';
 import {checkCommentLength} from './util.js';
 import {sendData} from './api.js';
 import constants from './constants.js';
