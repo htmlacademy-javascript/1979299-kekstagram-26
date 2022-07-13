@@ -1,10 +1,12 @@
-import './scale-photo.js';
+import {checkCommentLength} from './util.js';
+import {sendData} from './api.js';
 import constants from './constants.js';
 
 const formElement = document.querySelector('.img-upload__form');
 const hashtagsInputElement = formElement.querySelector('#hashtags');
 const descriptionInputElement = formElement.querySelector('#description');
 const re = /^#[A-Za-zА-Яа-яЕё0-9]{1,19}$/;
+const submitButton = formElement.querySelector('.img-upload__submit');
 
 const pristine = window.Pristine(formElement, {
   classTo: 'img-upload__item',
@@ -13,8 +15,6 @@ const pristine = window.Pristine(formElement, {
   errorTextTag: 'div',
   errorTextClass: 'img-upload__error'
 }, false);
-
-const commentValidate = (value) => value.length <= constants.COMMENT_MAX_LENGTH;
 
 function hasUniqueElements(hashtags) {
   const uniqueHashtags = [];
@@ -49,6 +49,16 @@ const hashtagsValidate = (value) => {
   return isValidate;
 };
 
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = 'Публикую...';
+};
+
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = 'Опубликовать';
+};
+
 pristine.addValidator(
   hashtagsInputElement,
   hashtagsValidate,
@@ -57,15 +67,21 @@ pristine.addValidator(
 
 pristine.addValidator(
   descriptionInputElement,
-  commentValidate,
+  checkCommentLength,
   'Длина комментария не более 140 символов'
 );
 
 formElement.addEventListener('submit', (evt) => {
   const isValidate = pristine.validate();
-  if (!isValidate) {
+  if (isValidate) {
+    blockSubmitButton();
+    const formData = new FormData(evt.target);
+    evt.preventDefault();
+    const sendForm = () => sendData(formData);
+    sendForm();
+  } else {
     evt.preventDefault();
   }
 });
 
-export {hashtagsInputElement, descriptionInputElement};
+export {hashtagsInputElement, descriptionInputElement, unblockSubmitButton};
