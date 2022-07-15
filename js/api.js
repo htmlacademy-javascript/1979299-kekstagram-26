@@ -2,7 +2,7 @@ import {popupElement} from './popup-uploading.js';
 import {closePopup} from './popup.js';
 import {onSendingForm} from './messages.js';
 import {unblockSubmitButton} from './form.js';
-import { getPhotoArray } from './filter-list.js';
+import {getPhotoArray} from './filter-list.js';
 import constants from './constants.js';
 
 const getData = (onSuccess, onError) => fetch(
@@ -21,6 +21,8 @@ const getData = (onSuccess, onError) => fetch(
     onError(err);
   });
 
+const FormResultsTypes = {SUCCESS: 'success', ERROR: 'error'};
+
 const sendData = (formData) => fetch(
   constants.API_SENDDATA_URL,
   {
@@ -32,15 +34,15 @@ const sendData = (formData) => fetch(
     if (response.ok) {
       unblockSubmitButton();
       closePopup(popupElement);
-      onSendingForm('success');
+      onSendingForm(FormResultsTypes.SUCCESS);
     } else {
       closePopup(popupElement);
-      onSendingForm('error');
+      onSendingForm(FormResultsTypes.ERROR);
     }
   })
   .catch(() => {
     closePopup(popupElement);
-    onSendingForm('error');
+    onSendingForm(FormResultsTypes.ERROR);
   });
 
 export {getData, sendData};
