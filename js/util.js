@@ -26,4 +26,20 @@ const removeInputValue = (input) => {
   input.value = '';
 };
 
-export {checkCommentLength, isEscapeKey, showElement, hideElement, removeInputValue};
+const shuffleArray = (array) => {
+  array.sort(() => Math.random() - 0.5);
+};
+
+const debounce = (callback, timeoutDelay) => {
+  let timeoutId;
+
+  const foo = (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+
+  return foo();
+};
+
+
+export {checkCommentLength, isEscapeKey, showElement, hideElement, removeInputValue, shuffleArray, debounce};

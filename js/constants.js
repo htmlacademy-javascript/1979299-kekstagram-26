@@ -26,5 +26,8 @@ export default {
 
   API_GETDATA_URL: 'https://26.javascript.pages.academy/kekstagram/data',
   API_SENDDATA_URL: 'https://26.javascript.pages.academy/kekstagram',
+
+  DRAW_DELAY: 500,
+  RANDOM_PHOTO_COUNT: 10,
 };
 

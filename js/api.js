@@ -2,6 +2,7 @@ import {popupElement} from './popup-uploading.js';
 import {closePopup} from './popup.js';
 import {onSendingForm} from './messages.js';
 import {unblockSubmitButton} from './form.js';
+import { getPhotoArray } from './filter-list.js';
 import constants from './constants.js';
 
 const getData = (onSuccess, onError) => fetch(
@@ -13,13 +14,12 @@ const getData = (onSuccess, onError) => fetch(
 )
   .then((response) => response.json())
   .then((data) => {
+    getPhotoArray(data);
     onSuccess(data);
   })
   .catch((err) => {
     onError(err);
   });
-
-export {getData};
 
 const sendData = (formData) => fetch(
   constants.API_SENDDATA_URL,
@@ -43,4 +43,4 @@ const sendData = (formData) => fetch(
     onSendingForm('error');
   });
 
-export {sendData};
+export {getData, sendData};
