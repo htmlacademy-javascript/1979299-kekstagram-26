@@ -7,7 +7,6 @@ const ACTIVE_FILTER_BUTTON = 'img-filters__button--active';
 const filterContainerElement = document.querySelector('.img-filters');
 const filterListElement = document.querySelector('.img-filters__form');
 const filterButtonsElement = document.querySelectorAll('.img-filters__button');
-
 const FilterTypes = {DEFAULT: 'filter-default', RANDOM: 'filter-random', DISCUSSED: 'filter-discussed'};
 
 let photos = {};
@@ -67,8 +66,7 @@ filterListElement.addEventListener('click', (evt) => {
     activeFilterButton.classList.add(ACTIVE_FILTER_BUTTON);
     const currentFilterType = activeFilterButton.id;
 
-    debounce(
-      () => onFilterButtonClick(currentFilterType),
+    debounce(() => onFilterButtonClick(currentFilterType),
       constants.DRAW_DELAY,
     );
   }
