@@ -25,7 +25,7 @@ const onClosingUploadingPopup = () => {
   scaleInput.value = '100%';
   scalePhotoPreview(constants.SCALE_MAX);
   removeInputValue(sliderValueElement);
-  sliderElement.setAttribute('disabled', true);
+  sliderElement.disabled = true;
   imagePreviewElement.classList = '';
   imagePreviewElement.style.filter = '';
   setImageEffectBackground('');

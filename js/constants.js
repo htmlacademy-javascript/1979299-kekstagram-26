@@ -33,10 +33,9 @@ export default {
   ESCAPE_KEY: 'Escape',
   FILE_TYPES: ['gif', 'jpg', 'jpeg', 'png'],
 
-  HASHTAG_ERROR_MESSAGE: 'Неверный формат хэштега: <br/>— не более 5 <br/>— не более 20 символов<br/>— не повторяться<br/>— состав из букв или цифр и начало с #',
+  HASHTAG_ERROR_MESSAGE: 'Неверный формат хэштега: <br/>— не более 5 хештегов<br/>— не более 20 символов<br/>— не повторяться<br/>— состав хештега из букв или цифр, начиная с #',
   COMMENT_ERROR_MESSAGE: 'Длина комментария должна быть не более 140 символов',
 
   BUTTON_PUBLISH_TEXT: 'Опубликовать',
   BUTTON_PUBLISH_TEXT_PROGRESS: 'Публикую...',
 };
-

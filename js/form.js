@@ -50,12 +50,12 @@ const hashtagsValidate = (value) => {
 };
 
 const blockSubmitButton = () => {
-  submitButton.setAttribute('disabled', true);
+  submitButton.disabled = true;
   submitButton.textContent = constants.BUTTON_PUBLISH_TEXT_PROGRESS;
 };
 
 const unblockSubmitButton = () => {
-  submitButton.removeAttribute('disabled');
+  submitButton.disabled = false;
   submitButton.textContent = constants.BUTTON_PUBLISH_TEXT;
 };
 
