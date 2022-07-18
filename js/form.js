@@ -31,7 +31,7 @@ const hashtagsValidate = (value) => {
   let isValidate = true;
   if (value.length > 0) {
     const hashtags = value.toLowerCase().split(' ');
-    if (hashtags.length > 5) {
+    if (hashtags.length > constants.HASHTAG_MAX_AMOUNT) {
       return false;
     }
     if (!hasUniqueElements(hashtags)) {
@@ -50,25 +50,25 @@ const hashtagsValidate = (value) => {
 };
 
 const blockSubmitButton = () => {
-  submitButton.disabled = true;
-  submitButton.textContent = 'Публикую...';
+  submitButton.setAttribute('disabled', true);
+  submitButton.textContent = constants.BUTTON_PUBLISH_TEXT_PROGRESS;
 };
 
 const unblockSubmitButton = () => {
-  submitButton.disabled = false;
-  submitButton.textContent = 'Опубликовать';
+  submitButton.removeAttribute('disabled');
+  submitButton.textContent = constants.BUTTON_PUBLISH_TEXT;
 };
 
 pristine.addValidator(
   hashtagsInputElement,
   hashtagsValidate,
-  'Неверный формат хэштега'
+  constants.HASHTAG_ERROR_MESSAGE
 );
 
 pristine.addValidator(
   descriptionInputElement,
   checkCommentLength,
-  'Длина комментария не более 140 символов'
+  constants.COMMENT_ERROR_MESSAGE
 );
 
 formElement.addEventListener('submit', (evt) => {

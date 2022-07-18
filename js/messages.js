@@ -1,10 +1,18 @@
 import {showElement, hideElement} from './util.js';
 import {isEscapeKey} from './util.js';
 
+const MessageTypes = { SUCCESS: 'success', ERROR: 'error' };
+
 const onPopupEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    hideElement(document.querySelector('.success'));
+    for (const index in MessageTypes) {
+      const messageElement = document.querySelector(`.${MessageTypes[index]}`);
+      if (!messageElement.classList.contains('hidden')) {
+        hideElement(messageElement);
+        document.removeEventListener('keydown', onPopupEscKeydown);
+      }
+    }
   }
 };
 
@@ -21,7 +29,7 @@ const createMessageElement = (type) => {
   const messageButton = messageElement.querySelector('button');
 
   messageButton.addEventListener('click', () => {
-    if (type === 'success') {
+    if (type === MessageTypes.SUCCESS) {
       hideElement(messageElement);
       document.removeEventListener('keydown', onPopupEscKeydown);
     }
@@ -30,8 +38,8 @@ const createMessageElement = (type) => {
   document.addEventListener('keydown', onPopupEscKeydown);
 };
 
-createMessageElement('success');
-createMessageElement('error');
+createMessageElement(MessageTypes.SUCCESS);
+createMessageElement(MessageTypes.ERROR);
 
 const onSendingForm = (type) => {
   const messageElement = document.querySelector(`.${type}`);

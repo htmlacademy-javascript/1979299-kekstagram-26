@@ -8,7 +8,7 @@ const checkCommentLength = (comment) => {
 };
 
 // на закрытие клавишей Esc
-const isEscapeKey = (evt) => evt.key === 'Escape';
+const isEscapeKey = (evt) => evt.key === constants.ESCAPE_KEY;
 
 // показывает элемент
 const showElement = (element) => {
@@ -33,12 +33,12 @@ const shuffleArray = (array) => {
 const debounce = (callback, timeoutDelay) => {
   let timeoutId;
 
-  const foo = (...rest) => {
+  const createTimeuot = (...rest) => {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
   };
 
-  return foo();
+  return createTimeuot();
 };
 
 

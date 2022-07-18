@@ -2,6 +2,7 @@ export default {
   LIMITED_NUMBER_COMMENTS: 5,
   COMMENT_MAX_LENGTH: 140,
   HASHTAG_MAX_LENGTH: 20,
+  HASHTAG_MAX_AMOUNT: 5,
 
   SCALE_MAX: 100,
   SCALE_MIN: 25,
@@ -29,6 +30,13 @@ export default {
   DRAW_DELAY: 500,
   RANDOM_PHOTO_COUNT: 10,
 
-  FILE_TYPES: ['gif', 'jpg', 'jpeg', 'png']
+  ESCAPE_KEY: 'Escape',
+  FILE_TYPES: ['gif', 'jpg', 'jpeg', 'png'],
+
+  HASHTAG_ERROR_MESSAGE: 'Неверный формат хэштега: <br/>— не более 5 <br/>— не более 20 символов<br/>— не повторяться<br/>— состав из букв или цифр и начало с #',
+  COMMENT_ERROR_MESSAGE: 'Длина комментария должна быть не более 140 символов',
+
+  BUTTON_PUBLISH_TEXT: 'Опубликовать',
+  BUTTON_PUBLISH_TEXT_PROGRESS: 'Публикую...',
 };
 

@@ -1,3 +1,4 @@
+import {hideElement, showElement} from './util.js';
 import constants from './constants.js';
 
 const imagePreviewElement = document.querySelector('.img-upload__preview img');
@@ -5,8 +6,18 @@ const effectListInputsElement = document.querySelectorAll('.effects__radio');
 
 const sliderElement = document.querySelector('.effect-level__slider');
 const sliderValueElement = document.querySelector('.effect-level__value');
+const sliderContainerElement = document.querySelector('.img-upload__effect-level');
 
-let selectedEffect = 'none';
+const EffectTypes = {
+  NONE: 'none',
+  CHROME: 'chrome',
+  SEPIA: 'sepia',
+  MARVIN: 'marvin',
+  PHOBOS: 'phobos',
+  HEAT: 'heat'
+};
+
+let selectedEffect = EffectTypes.NONE;
 
 noUiSlider.create(sliderElement, {
   range: {
@@ -19,13 +30,17 @@ noUiSlider.create(sliderElement, {
 });
 
 sliderElement.setAttribute('disabled', true);
+hideElement(sliderContainerElement);
 
 const updateSliderOptions = (effectType) => {
   sliderElement.removeAttribute('disabled');
+  if (sliderContainerElement.classList.contains('hidden')) {
+    showElement(sliderContainerElement);
+  }
 
   switch (effectType) {
-    case 'chrome':
-    case 'sepia':
+    case EffectTypes.CHROME:
+    case EffectTypes.SEPIA:
       sliderElement.noUiSlider.updateOptions({
         range: {
           min: constants.CHROMESEPIA_MIN_VALUE,
@@ -35,7 +50,7 @@ const updateSliderOptions = (effectType) => {
       });
       sliderElement.noUiSlider.set(constants.CHROMESEPIA_MAX_VALUE);
       break;
-    case 'marvin':
+    case EffectTypes.MARVIN:
       sliderElement.noUiSlider.updateOptions({
         range: {
           min: constants.MARVIN_MIN_VALUE,
@@ -45,7 +60,7 @@ const updateSliderOptions = (effectType) => {
       });
       sliderElement.noUiSlider.set(constants.MARVIN_MAX_VALUE);
       break;
-    case 'phobos':
+    case EffectTypes.PHOBOS:
       sliderElement.noUiSlider.updateOptions({
         range: {
           min: constants.PHOBOS_MIN_VALUE,
@@ -55,7 +70,7 @@ const updateSliderOptions = (effectType) => {
       });
       sliderElement.noUiSlider.set(constants.PHOBOS_MAX_VALUE);
       break;
-    case 'heat':
+    case EffectTypes.HEAT:
       sliderElement.noUiSlider.updateOptions({
         range: {
           min: constants.HEAT_MIN_VALUE,
@@ -65,7 +80,7 @@ const updateSliderOptions = (effectType) => {
       });
       sliderElement.noUiSlider.set(constants.PHOBOS_MAX_VALUE);
       break;
-    case 'none':
+    case EffectTypes.NONE:
       sliderElement.noUiSlider.updateOptions({
         range: {
           min: constants.NONE_MIN_VALUE,
@@ -75,6 +90,7 @@ const updateSliderOptions = (effectType) => {
       });
       sliderElement.noUiSlider.set(constants.NONE_MAX_VALUE);
       sliderElement.setAttribute('disabled', true);
+      hideElement(sliderContainerElement);
       break;
   }
 };
@@ -85,29 +101,29 @@ const setImgStyle = (style) => {
 
 const setEffectStyle = (value) => {
   switch(selectedEffect) {
-    case 'chrome':
+    case EffectTypes.CHROME:
       setImgStyle(`grayscale(${value})`);
       break;
-    case 'sepia':
+    case EffectTypes.SEPIA:
       setImgStyle(`sepia(${value})`);
       break;
-    case 'marvin':
+    case EffectTypes.MARVIN:
       setImgStyle(`invert(${value}%)`);
       break;
-    case 'phobos':
+    case EffectTypes.PHOBOS:
       setImgStyle(`blur(${value}px)`);
       break;
-    case 'heat':
+    case EffectTypes.HEAT:
       setImgStyle(`brightness(${value})`);
       break;
-    case 'none':
+    case EffectTypes.NONE:
       setImgStyle('');
       break;
   }
 };
 
 const setDefaultEffects = () => {
-  selectedEffect = 'none';
+  selectedEffect = EffectTypes.NONE;
   updateSliderOptions(selectedEffect);
   setEffectStyle();
   effectListInputsElement[0].checked = true;
@@ -119,7 +135,7 @@ effectListInputsElement.forEach((effectButton) => {
     setEffectStyle();
     selectedEffect = effectButton.value;
 
-    if (selectedEffect !== 'none') {
+    if (selectedEffect !== EffectTypes.NONE) {
       const newEffectClass = `effects__preview--${selectedEffect}`;
       imagePreviewElement.classList.add(newEffectClass);
     }
