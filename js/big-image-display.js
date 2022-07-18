@@ -30,7 +30,7 @@ const getBigViewDisplay  = (url, likes, comments, description) => {
 bigViewDisplayCloseButton.addEventListener('click', () => {
   closePopup(bigViewDisplay);
   clearCommentsList();
-  document.addEventListener('keydown', onBigViewDisplayEscKeydown);
+  document.removeEventListener('keydown', onBigViewDisplayEscKeydown);
 });
 
 export {getBigViewDisplay};

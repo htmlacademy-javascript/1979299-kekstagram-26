@@ -2,6 +2,7 @@ export default {
   LIMITED_NUMBER_COMMENTS: 5,
   COMMENT_MAX_LENGTH: 140,
   HASHTAG_MAX_LENGTH: 20,
+  HASHTAG_MAX_AMOUNT: 5,
 
   SCALE_MAX: 100,
   SCALE_MIN: 25,
@@ -24,10 +25,17 @@ export default {
   NONE_STEP: 1,
   NONE_START: 100,
 
-  API_GETDATA_URL: 'https://26.javascript.pages.academy/kekstagram/data',
-  API_SENDDATA_URL: 'https://26.javascript.pages.academy/kekstagram',
+  API_DATA_URL: 'https://26.javascript.pages.academy/kekstagram',
 
   DRAW_DELAY: 500,
   RANDOM_PHOTO_COUNT: 10,
-};
 
+  ESCAPE_KEY: 'Escape',
+  FILE_TYPES: ['gif', 'jpg', 'jpeg', 'png'],
+
+  HASHTAG_ERROR_MESSAGE: 'Неверный формат хэштега: <br/>— не более 5 хештегов<br/>— не более 20 символов<br/>— не повторяться<br/>— состав хештега из букв или цифр, начиная с #',
+  COMMENT_ERROR_MESSAGE: 'Длина комментария должна быть не более 140 символов',
+
+  BUTTON_PUBLISH_TEXT: 'Опубликовать',
+  BUTTON_PUBLISH_TEXT_PROGRESS: 'Публикую...',
+};

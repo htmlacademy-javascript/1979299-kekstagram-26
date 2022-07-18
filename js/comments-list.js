@@ -4,7 +4,6 @@ import constants from './constants.js';
 const listContainerElement = document.querySelector('.social__comments');
 const commentElement = document.querySelector('.social__comment');
 const commentsFragment = document.createDocumentFragment();
-
 const countElement = document.querySelector('.social__comment-count');
 const countTotalElement = countElement.querySelector('.comments-count');
 const loaderElememt = document.querySelector('.social__comments-loader');

@@ -6,7 +6,7 @@ import {getPhotoArray} from './filter-list.js';
 import constants from './constants.js';
 
 const getData = (onSuccess, onError) => fetch(
-  constants.API_GETDATA_URL,
+  `${constants.API_DATA_URL}/data`,
   {
     method: 'GET',
     credentials: 'same-origin',
@@ -24,7 +24,7 @@ const getData = (onSuccess, onError) => fetch(
 const FormResultsTypes = {SUCCESS: 'success', ERROR: 'error'};
 
 const sendData = (formData) => fetch(
-  constants.API_SENDDATA_URL,
+  constants.API_DATA_URL,
   {
     method: 'POST',
     body: formData,
