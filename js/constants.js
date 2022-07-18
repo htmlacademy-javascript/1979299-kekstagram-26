@@ -28,5 +28,7 @@ export default {
 
   DRAW_DELAY: 500,
   RANDOM_PHOTO_COUNT: 10,
+
+  FILE_TYPES: ['gif', 'jpg', 'jpeg', 'png']
 };
 
