@@ -57,11 +57,11 @@ filterListElement.addEventListener('click', (evt) => {
       if (filterButton.classList.contains(ACTIVE_FILTER_BUTTON)) {
         filterButton.classList.remove(ACTIVE_FILTER_BUTTON);
       }
-      filterButton.disabled = false;
+      filterButton.removeAttribute('disabled');
     });
 
     const activeFilterButton = evt.target;
-    activeFilterButton.disabled = true;
+    activeFilterButton.setAttribute('disabled', true);
 
     activeFilterButton.classList.add(ACTIVE_FILTER_BUTTON);
     const currentFilterType = activeFilterButton.id;

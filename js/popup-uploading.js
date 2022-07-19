@@ -1,7 +1,7 @@
 import {openPopup, closePopup} from './popup.js';
 import {isEscapeKey, removeInputValue} from './util.js';
 import {hashtagsInputElement, descriptionInputElement} from './form.js';
-import {scaleInput, scalePhotoPreview} from './scale-photo.js';
+import {scaleInputElement, scalePhotoPreview} from './scale-photo.js';
 import {sliderElement, sliderValueElement, setDefaultEffects} from './photo-effect-selection.js';
 import constants from './constants.js';
 
@@ -22,10 +22,10 @@ const onClosingUploadingPopup = () => {
   removeInputValue(uploadFileInputElement);
   removeInputValue(hashtagsInputElement);
   removeInputValue(descriptionInputElement);
-  scaleInput.value = '100%';
+  scaleInputElement.value = '100%';
   scalePhotoPreview(constants.SCALE_MAX);
   removeInputValue(sliderValueElement);
-  sliderElement.disabled = true;
+  sliderElement.setAttribute('disabled', true);
   imagePreviewElement.classList = '';
   imagePreviewElement.style.filter = '';
   setImageEffectBackground('');

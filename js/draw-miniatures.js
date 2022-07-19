@@ -2,8 +2,8 @@ import {getBigViewDisplay} from './big-image-display.js';
 import {getData} from './api.js';
 import {showElement, hideElement} from './util.js';
 
-const drawMiniaturesTemplate = document.querySelector('#picture').content.querySelector('.picture');
-const picturesContainer = document.querySelector('.pictures');
+const drawMiniaturesTemplateElement = document.querySelector('#picture').content.querySelector('.picture');
+const picturesContainerElement = document.querySelector('.pictures');
 const errorElement = document.querySelector('.img-upload__overlay--error');
 const reloadingButtonElement = document.querySelector('.img-upload__button-reload');
 
@@ -20,7 +20,7 @@ const renderPictureList = (pictures) => {
   const fragment = document.createDocumentFragment();
 
   pictures.forEach((photo) => {
-    const pictureElement = drawMiniaturesTemplate.cloneNode(true);
+    const pictureElement = drawMiniaturesTemplateElement.cloneNode(true);
     pictureElement.querySelector('.picture__img').src = photo.url;
     pictureElement.querySelector('.picture__likes').textContent = photo.likes;
     pictureElement.querySelector('.picture__comments').textContent = photo.comments.length;
@@ -31,7 +31,7 @@ const renderPictureList = (pictures) => {
     });
     fragment.appendChild(pictureElement);
   });
-  picturesContainer.appendChild(fragment);
+  picturesContainerElement.appendChild(fragment);
 };
 
 const onRenderUploadingError = () => {
