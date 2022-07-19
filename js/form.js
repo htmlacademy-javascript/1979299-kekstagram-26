@@ -6,7 +6,7 @@ const formElement = document.querySelector('.img-upload__form');
 const hashtagsInputElement = formElement.querySelector('#hashtags');
 const descriptionInputElement = formElement.querySelector('#description');
 const re = /^#[A-Za-zА-Яа-яЕё0-9]{1,19}$/;
-const submitButton = formElement.querySelector('.img-upload__submit');
+const submitButtonElement = formElement.querySelector('.img-upload__submit');
 
 const pristine = window.Pristine(formElement, {
   classTo: 'img-upload__item',
@@ -50,13 +50,13 @@ const hashtagsValidate = (value) => {
 };
 
 const blockSubmitButton = () => {
-  submitButton.disabled = true;
-  submitButton.textContent = constants.BUTTON_PUBLISH_TEXT_PROGRESS;
+  submitButtonElement.setAttribute('disabled', true);
+  submitButtonElement.textContent = constants.BUTTON_PUBLISH_TEXT_PROGRESS;
 };
 
 const unblockSubmitButton = () => {
-  submitButton.disabled = false;
-  submitButton.textContent = constants.BUTTON_PUBLISH_TEXT;
+  submitButtonElement.removeAttribute('disabled');
+  submitButtonElement.textContent = constants.BUTTON_PUBLISH_TEXT;
 };
 
 pristine.addValidator(

@@ -30,6 +30,7 @@ const shuffleArray = (array) => {
   array.sort(() => Math.random() - 0.5);
 };
 
+// устранение дребезга
 const debounce = (callback, timeoutDelay) => {
   let timeoutId;
 
@@ -40,6 +41,5 @@ const debounce = (callback, timeoutDelay) => {
 
   return createTimeuot();
 };
-
 
 export {checkCommentLength, isEscapeKey, showElement, hideElement, removeInputValue, shuffleArray, debounce};

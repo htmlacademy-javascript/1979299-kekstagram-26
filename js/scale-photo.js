@@ -2,31 +2,31 @@ import constants from './constants.js';
 
 const imagePreviewElement = document.querySelector('.img-upload__preview img');
 
-const scaleInput = document.querySelector('.scale__control--value');
-const scaleBiggerButton = document.querySelector('.scale__control--bigger');
-const scaleSmallerButton = document.querySelector('.scale__control--smaller');
+const scaleInputElement = document.querySelector('.scale__control--value');
+const scaleBiggerButtonElement = document.querySelector('.scale__control--bigger');
+const scaleSmallerButtonElement = document.querySelector('.scale__control--smaller');
 
 const scalePhotoPreview = (value) => {
   const scale = parseInt(value, 10) / 100;
   imagePreviewElement.style.transform = `scale(${scale})`;
 };
 
-scalePhotoPreview(scaleInput.value);
+scalePhotoPreview(scaleInputElement.value);
 
-scaleBiggerButton.addEventListener('click', () => {
-  const newScale = parseInt(scaleInput.value, 10) + constants.SCALE_STEP;
+scaleBiggerButtonElement.addEventListener('click', () => {
+  const newScale = parseInt(scaleInputElement.value, 10) + constants.SCALE_STEP;
   if (newScale <= constants.SCALE_MAX) {
     scalePhotoPreview(newScale);
-    scaleInput.value = `${newScale}%`;
+    scaleInputElement.value = `${newScale}%`;
   }
 });
 
-scaleSmallerButton.addEventListener('click', () => {
-  const newScale = parseInt(scaleInput.value, 10) - constants.SCALE_STEP;
+scaleSmallerButtonElement.addEventListener('click', () => {
+  const newScale = parseInt(scaleInputElement.value, 10) - constants.SCALE_STEP;
   if (newScale >= constants.SCALE_MIN) {
     scalePhotoPreview(newScale);
-    scaleInput.value = `${newScale}%`;
+    scaleInputElement.value = `${newScale}%`;
   }
 });
 
-export {scaleInput, scalePhotoPreview};
+export {scaleInputElement, scalePhotoPreview};

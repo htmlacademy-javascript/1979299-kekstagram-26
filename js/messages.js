@@ -1,7 +1,7 @@
 import {showElement, hideElement} from './util.js';
 import {isEscapeKey} from './util.js';
 
-const MessageTypes = { SUCCESS: 'success', ERROR: 'error' };
+const MessageTypes = {SUCCESS: 'success', ERROR: 'error'};
 
 const onPopupEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
