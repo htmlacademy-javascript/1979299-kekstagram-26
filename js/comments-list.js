@@ -42,6 +42,7 @@ const checkCommentListLength = (comments) => {
     renderCommentsList(comments);
     hideElement(loaderElement);
     countCurrentElement.textContent = allComments.length;
+    countTotalElement.textContent = Number(countCurrentElement.textContent);
   }
 };
 
