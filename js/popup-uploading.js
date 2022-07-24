@@ -41,29 +41,31 @@ const onPopupEscKeydown = (evt) => {
   }
 };
 
-uploadFileInputElement.addEventListener('change', () => {
-  const file = uploadFileInputElement.files[0];
-  const fileName = file.name.toLowerCase();
-  const matches = constants.FILE_TYPES.some((it) => fileName.endsWith(it));
+const initEventListeners = () => {
+  uploadFileInputElement.addEventListener('change', () => {
+    const file = uploadFileInputElement.files[0];
+    const fileName = file.name.toLowerCase();
+    const matches = constants.FILE_TYPES.some((it) => fileName.endsWith(it));
 
-  if (matches) {
-    const fileUrl = URL.createObjectURL(file);
-    imagePreviewElement.src = fileUrl;
-    setImageEffectBackground(fileUrl);
+    if (matches) {
+      const fileUrl = URL.createObjectURL(file);
+      imagePreviewElement.src = fileUrl;
+      setImageEffectBackground(fileUrl);
 
+      openPopup(popupElement);
+      document.addEventListener('keydown', onPopupEscKeydown);
+    }
+  });
+
+  uploadFileInputElement.addEventListener('change', () => {
     openPopup(popupElement);
     document.addEventListener('keydown', onPopupEscKeydown);
-  }
-});
+  });
 
-uploadFileInputElement.addEventListener('change', () => {
-  openPopup(popupElement);
-  document.addEventListener('keydown', onPopupEscKeydown);
-});
+  popupCloseButtonElement.addEventListener('click', () => {
+    onClosingUploadingPopup();
+    document.removeEventListener('keydown', onPopupEscKeydown);
+  });
+};
 
-popupCloseButtonElement.addEventListener('click', () => {
-  onClosingUploadingPopup();
-  document.removeEventListener('keydown', onPopupEscKeydown);
-});
-
-export {popupElement};
+export {popupElement, initEventListeners};

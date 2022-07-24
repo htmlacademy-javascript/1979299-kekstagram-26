@@ -1,5 +1,6 @@
 import {checkCommentLength} from './util.js';
 import {sendData} from './api.js';
+import {setDefaultEffects, imagePreviewElement} from './photo-effect-selection.js';
 import constants from './constants.js';
 
 const formElement = document.querySelector('.img-upload__form');
@@ -71,17 +72,22 @@ pristine.addValidator(
   constants.COMMENT_ERROR_MESSAGE
 );
 
-formElement.addEventListener('submit', (evt) => {
-  const isValidate = pristine.validate();
-  if (isValidate) {
-    blockSubmitButton();
-    const formData = new FormData(evt.target);
-    evt.preventDefault();
-    const sendForm = () => sendData(formData);
-    sendForm();
-  } else {
-    evt.preventDefault();
-  }
-});
+const actionWorkForm = () => {
+  formElement.addEventListener('submit', (evt) => {
+    const isValidate = pristine.validate();
+    if (isValidate) {
+      blockSubmitButton();
+      const formData = new FormData(evt.target);
+      evt.preventDefault();
+      const sendForm = () => sendData(formData);
+      sendForm();
+      evt.target.reset();
+      setDefaultEffects();
+      imagePreviewElement.className = '';
+    } else {
+      evt.preventDefault();
+    }
+  });
+};
 
-export {hashtagsInputElement, descriptionInputElement, unblockSubmitButton};
+export {hashtagsInputElement, descriptionInputElement, unblockSubmitButton, actionWorkForm};

@@ -8,7 +8,7 @@ const bigViewDisplayLikesElement = bigViewDisplayElement.querySelector('.likes-c
 const bigViewDisplayDescriptionElement = bigViewDisplayElement.querySelector('.social__caption');
 const bigViewDisplayCloseButtonElement = bigViewDisplayElement.querySelector('.big-picture__cancel');
 
-const onBigViewDisplayEscKeydown = (evt) => {
+const onGetBigViewDisplayEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     closePopup(bigViewDisplayElement);
@@ -24,13 +24,13 @@ const getBigViewDisplay  = (url, likes, comments, description) => {
 
   getAllComments(comments);
 
-  document.addEventListener('keydown', onBigViewDisplayEscKeydown);
+  document.addEventListener('keydown', onGetBigViewDisplayEscKeydown);
 };
 
 bigViewDisplayCloseButtonElement.addEventListener('click', () => {
   closePopup(bigViewDisplayElement);
   clearCommentsList();
-  document.removeEventListener('keydown', onBigViewDisplayEscKeydown);
+  document.removeEventListener('keydown', onGetBigViewDisplayEscKeydown);
 });
 
 export {getBigViewDisplay};

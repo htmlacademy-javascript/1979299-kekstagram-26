@@ -8,9 +8,9 @@ const errorElement = document.querySelector('.img-upload__overlay--error');
 const reloadingButtonElement = document.querySelector('.img-upload__button-reload');
 
 const clearPictureList = () => {
-  const pictures = document.querySelectorAll('.picture');
+  const picturesElements = document.querySelectorAll('.picture');
 
-  pictures.forEach((picure) => {
+  picturesElements.forEach((picure) => {
     picure.remove();
   });
 };
@@ -40,11 +40,9 @@ const onRenderUploadingError = () => {
 
 const loadPictures = () => getData(renderPictureList, onRenderUploadingError);
 
-loadPictures();
-
 reloadingButtonElement.addEventListener('click', () => {
   hideElement(errorElement);
   loadPictures();
 });
 
-export {renderPictureList};
+export {renderPictureList, loadPictures};
