@@ -1,5 +1,4 @@
-import {showElement, hideElement} from './util.js';
-import {isEscapeKey} from './util.js';
+import {showElement, hideElement, isEscapeKey} from './util.js';
 
 const MessageTypes = {SUCCESS: 'success', ERROR: 'error'};
 
@@ -17,18 +16,18 @@ const onPopupEscKeydown = (evt) => {
 };
 
 const createMessageElement = (type) => {
-  const template = document
+  const templateElement = document
     .querySelector(`#${type}`)
     .content
     .querySelector(`.${type}`);
 
-  const messageElement = template.cloneNode(true);
+  const messageElement = templateElement.cloneNode(true);
   messageElement.classList.add('hidden');
   document.body.append(messageElement);
 
-  const messageButton = messageElement.querySelector('button');
+  const messageButtonElement = messageElement.querySelector('button');
 
-  messageButton.addEventListener('click', () => {
+  messageButtonElement.addEventListener('click', () => {
     if (type === MessageTypes.SUCCESS) {
       hideElement(messageElement);
       document.removeEventListener('keydown', onPopupEscKeydown);
@@ -44,6 +43,25 @@ createMessageElement(MessageTypes.ERROR);
 const onSendingForm = (type) => {
   const messageElement = document.querySelector(`.${type}`);
   showElement(messageElement);
+
+  document.addEventListener('keydown', (evt) => {
+    if (isEscapeKey(evt)) {
+      evt.preventDefault();
+      hideElement(messageElement);
+    }
+  });
+
+  document.addEventListener('click', (evt) => {
+    if (evt.target.closest('.success')) {
+      hideElement(messageElement);
+    }
+  });
+
+  document.addEventListener('click', (evt) => {
+    if (evt.target.closest('.error')) {
+      hideElement(messageElement);
+    }
+  });
 };
 
 export {onSendingForm};

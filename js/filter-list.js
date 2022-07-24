@@ -20,7 +20,7 @@ const getPhotoArray = (data) => {
   showFilter();
 };
 
-const compareLikesCount = (picture1, picture2) => picture1.likes - picture2.likes;
+const compareCommentsCount = (a, b) => a.comments.length - b.comments.length;
 
 const applyDefaultFilter = () => {
   renderPictureList(photos);
@@ -33,7 +33,7 @@ const applyRandomFilter = () => {
 };
 
 const applyDiscussedFilter = () => {
-  const copyArray = photos.slice().sort(compareLikesCount);
+  const copyArray = photos.slice().sort(compareCommentsCount).reverse();
   renderPictureList(copyArray);
 };
 
