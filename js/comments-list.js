@@ -40,8 +40,8 @@ const checkCommentListLength = (comments) => {
     renderCommentsList(commentList);
   } else {
     renderCommentsList(comments);
-    // hideElement(countElement);
     hideElement(loaderElement);
+    countCurrentElement.textContent = allComments.length;
   }
 };
 
